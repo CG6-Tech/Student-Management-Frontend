@@ -9,6 +9,7 @@ function StudentsPage() {
         const fetchStudents = async () => {
             try {
                 const studentData = await ApiService.getStudents();
+                console.log(students);
                 setStudents(studentData);
             } catch (error) {
                 console.error('Error fetching students:', error);
