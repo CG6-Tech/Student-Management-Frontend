@@ -19,6 +19,10 @@ function StudentsPage() {
         fetchStudents();
     }, []);
 
+    function handleDelete() {
+        
+    }
+
     return (
         <div>
             <Link to="/students/create" >
