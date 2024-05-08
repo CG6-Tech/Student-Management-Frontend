@@ -5,6 +5,7 @@ import ApiService from '../../services/apiService';
 
 function CreateStudentPage() {
     const [formData, setFormData] = useState({
+        bid: '',
         firstName: '',
         lastName: '',
         studentLevel: '',
@@ -44,6 +45,10 @@ function CreateStudentPage() {
             {successMessage && <div className="text-green-600">{successMessage}</div>}
             {errorMessage && <div className="text-red-600">{errorMessage}</div>}
             <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+                <div className="mb-5">
+                    <label for="bid" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">B id</label>
+                    <input type="text" id="bid" name="bid" value={formData.bid} onChange={handleChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="B001" required />
+                </div>
                 <div className="mb-5">
                     <label for="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
                     <input type="text" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="John" required />
