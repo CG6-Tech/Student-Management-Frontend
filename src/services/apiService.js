@@ -20,18 +20,18 @@ const ApiService = {
     }
   },
 
-  async getStudents(bid) {
+  async getStudents() {
     try {
-      const response = await apiClient.get(`/students/${bid}`);
+      const response = await apiClient.get(`/students`);
       return response;
     } catch (error) {
       throw error;
     }
   },
 
-  async deleteStudent() {
+  async deleteStudent(bid) {
     try {
-      const response = await apiClient.delete("/students");
+      const response = await apiClient.delete(`/students/${bid}`);
       return response.data;
     } catch (error) {
       throw error;
@@ -76,7 +76,7 @@ const ApiService = {
 
   async getCourses() {
     try {
-      const response = await apiClient.get("/courses");
+      const response = await apiClient.get("/course");
       return response.data;
     } catch (error) {
       throw error;
