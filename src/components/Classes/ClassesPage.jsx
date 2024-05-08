@@ -66,7 +66,7 @@ function ClassesPage() {
                     <tbody>
                         {classes.map((clas) => (
 
-                            <tr key={clas.id} className="bg-white border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr key={clas["CLASSID"]} className="bg-white border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td className="px-6 py-4 whitespace-nowrap">{clas["CLASSID"]}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">{clas["DEPT_CODE"]}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">{clas["COURSE#"]}</td>

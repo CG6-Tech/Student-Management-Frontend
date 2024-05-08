@@ -23,6 +23,7 @@ const ApiService = {
   async getStudents() {
     try {
       const response = await apiClient.get(`/students`);
+      console.log("Student response ===> ", response)
       return response;
     } catch (error) {
       throw error;

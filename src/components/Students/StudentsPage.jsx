@@ -9,7 +9,7 @@ function StudentsPage() {
         const fetchStudents = async () => {
             try {
                 const studentData = await ApiService.getStudents();
-                console.log(students);
+                console.log("Comp ===> ",students);
                 setStudents(studentData);
             } catch (error) {
                 console.error('Error fetching students:', error);
@@ -18,10 +18,6 @@ function StudentsPage() {
 
         fetchStudents();
     }, []);
-
-    const handleDelete = (id) => {
-        // deleteStudent(id);
-    };
 
     return (
         <div>
@@ -63,7 +59,7 @@ function StudentsPage() {
                     </thead>
                     <tbody>
                         {students.map((student) => (
-                            <tr key={student.id} className="bg-white border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr key={student["B#"]} className="bg-white border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td className="px-6 py-4 whitespace-nowrap">{student["B#"]}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">{student["FIRST_NAME"]}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">{student["LAST_NAME"]}</td>
@@ -72,10 +68,10 @@ function StudentsPage() {
                                 <td className="px-6 py-4 whitespace-nowrap">{student["EMAIL"]}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">{student["BDATE"]}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right">
-                                    <Link to={`/students/edit/${student.id}`} >
+                                    <Link to={`/students/edit/${student["B#"]}`} >
                                         <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     </Link>
-                                    <button onClick={() => handleDelete(student.id)} className="ml-2 text-red-600 dark:text-red-500 hover:text-red-700 dark:hover:text-red-700" aria-label="Delete">
+                                    <button onClick={() => handleDelete(student["B#"])} className="ml-2 text-red-600 dark:text-red-500 hover:text-red-700 dark:hover:text-red-700" aria-label="Delete">
                                         <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
 
                                     </button>
