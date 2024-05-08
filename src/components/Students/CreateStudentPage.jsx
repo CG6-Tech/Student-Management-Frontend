@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ApiService from '../../services/apiService';
 
-function CreateStudentPage({ dropStudent }) {
+
+function CreateStudentPage() {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -9,6 +12,9 @@ function CreateStudentPage({ dropStudent }) {
         email: '',
         birthdate: ''
     });
+    const navigate = useNavigate();
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -18,13 +24,25 @@ function CreateStudentPage({ dropStudent }) {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        try {
+            await ApiService.createStudent(formData);
+            setSuccessMessage('Student created successfully!');
+            setErrorMessage('');
+            setTimeout(() => {
+                navigate('/students');
+            }, 500);
+        } catch (error) {
+            setSuccessMessage('');
+            setErrorMessage('Failed to create student. Please try again.');
+        }
     };
 
     return (
         <div>
+            {successMessage && <div className="text-green-600">{successMessage}</div>}
+            {errorMessage && <div className="text-red-600">{errorMessage}</div>}
             <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
                 <div className="mb-5">
                     <label for="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>

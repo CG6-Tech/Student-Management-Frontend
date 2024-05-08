@@ -63,13 +63,13 @@ function StudentsPage() {
                     <tbody>
                         {students.map((student) => (
                             <tr key={student.id} className="bg-white border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td className="px-6 py-4 whitespace-nowrap">{student.id}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{student.firstName}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{student.lastName}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{student.grade}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{student.gpa}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{student.email}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{student.dob}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{student["B#"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{student["FIRST_NAME"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{student["LAST_NAME"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{student["ST_LEVEL"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{student["GPA"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{student["EMAIL"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{student["BDATE"]}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right">
                                     <Link to={`/students/edit/${student.id}`} >
                                         <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>

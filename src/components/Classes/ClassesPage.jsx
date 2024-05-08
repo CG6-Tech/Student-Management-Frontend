@@ -67,15 +67,15 @@ function ClassesPage() {
                         {classes.map((clas) => (
 
                             <tr key={clas.id} className="bg-white border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td className="px-6 py-4 whitespace-nowrap">{clas.classid}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{clas.dept_code}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{clas.course}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{clas.sect}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{clas.year}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{clas.semester}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{clas.limit}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{clas.class_size}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{clas.room}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas["CLASSID"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas["DEPT_CODE"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas["COURSE#"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas["SECT#"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas["YEAR"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas["SEMESTER"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas["LIMIT"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas["CLASS_SIZE"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas["ROOM"]}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right">
                                     <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                 </td>

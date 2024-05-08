@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function LogsPage({ createLog }) {
+    const [classes, setClasses] = useState([]);
+
+    // useEffect(() => {
+    //     const fetchClasses = async () => {
+    //         try {
+    //             const classesData = await ApiService.getClasses();
+    //             console.log("Classes => ", classesData);
+    //             setClasses(classesData);
+    //         } catch (error) {
+    //             console.error('Error fetching students:', error);
+    //         }
+    //     };
+
+    //     fetchClasses();
+    // }, []);
 
     return (
         <div>

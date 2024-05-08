@@ -49,9 +49,9 @@ function CoursesPage() {
                     <tbody>
                         {courses.map((course) => (
                             <tr key={course.id} className="bg-white border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td className="px-6 py-4 whitespace-nowrap">{course.dept_code}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{course.course}</td>
-                                <td className="px-6 py-4 whitespace-nowrap">{course.title}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{course["DEPT_CODE"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{course["COURSE#"]}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{course["TITLE"]}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-right">
                                     <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                 </td>

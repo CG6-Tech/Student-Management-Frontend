@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ApiService from '../../services/apiService';
 
 function CreateClassPage({ createClass }) {
     const [formData, setFormData] = useState({
@@ -12,6 +14,9 @@ function CreateClassPage({ createClass }) {
         classSize: '',
         room: ''
     });
+    const navigate = useNavigate();
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,24 +26,25 @@ function CreateClassPage({ createClass }) {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        setFormData({
-            classid: '',
-            dept_code: '',
-            courseNumber: '',
-            sectionNumber: '',
-            year: '',
-            semester: '',
-            limit: '',
-            classSize: '',
-            room: ''
-        });
+        try {
+            await ApiService.createClasses(formData);
+            setSuccessMessage('Class created successfully!');
+            setErrorMessage('');
+            setTimeout(() => {
+                navigate('/classes');
+            }, 500);
+        } catch (error) {
+            setSuccessMessage('');
+            setErrorMessage('Failed to create Class. Please try again.');
+        }
     };
 
     return (
         <div>
+            {successMessage && <div className="text-green-600">{successMessage}</div>}
+            {errorMessage && <div className="text-red-600">{errorMessage}</div>}
             <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
                 <div className="mb-5">
                     <label htmlFor="classid" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class ID</label>
