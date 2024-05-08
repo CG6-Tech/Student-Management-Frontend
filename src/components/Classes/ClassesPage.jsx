@@ -8,8 +8,9 @@ function ClassesPage() {
     useEffect(() => {
         const fetchClasses = async () => {
             try {
-                const studentData = await ApiService.getClasses();
-                setClasses(studentData);
+                const classesData = await ApiService.getClasses();
+                console.log("Classes => ", classesData);
+                setClasses(classesData);
             } catch (error) {
                 console.error('Error fetching students:', error);
             }
@@ -21,7 +22,7 @@ function ClassesPage() {
     return (
         <div>
             <Link to="/classes/create" >
-            <button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Create Class</button>
+                <button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Create Class</button>
             </Link>
             <hr class="w-98 h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
             <h2 class="px-3 font-medium text-gray-900 bg-white dark:text-white dark:bg-gray-900">Classes Data</h2>
@@ -63,20 +64,23 @@ function ClassesPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="bg-white border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td className="px-6 py-4 whitespace-nowrap">CS101</td>
-                            <td className="px-6 py-4 whitespace-nowrap">COMP</td>
-                            <td className="px-6 py-4 whitespace-nowrap">101</td>
-                            <td className="px-6 py-4 whitespace-nowrap">01</td>
-                            <td className="px-6 py-4 whitespace-nowrap">2024</td>
-                            <td className="px-6 py-4 whitespace-nowrap">Fall</td>
-                            <td className="px-6 py-4 whitespace-nowrap">30</td>
-                            <td className="px-6 py-4 whitespace-nowrap">25</td>
-                            <td className="px-6 py-4 whitespace-nowrap">Room 101</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-right">
-                                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
-                        </tr>
+                        {classes.map((clas) => (
+
+                            <tr key={clas.id} className="bg-white border-b dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td className="px-6 py-4 whitespace-nowrap">{clas.classid}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas.dept_code}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas.course}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas.sect}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas.year}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas.semester}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas.limit}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas.class_size}</td>
+                                <td className="px-6 py-4 whitespace-nowrap">{clas.room}</td>
+                                <td className="px-6 py-4 whitespace-nowrap text-right">
+                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
